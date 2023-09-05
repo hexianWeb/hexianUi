@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import { ref, onMounted } from "vue";
-import Button from "./components/Button/Button.vue";
-import type { ButtonInstance } from "./components/Button/types";
-const buttonRef = ref<ButtonInstance | null>(null);
-onMounted(() => {
-  console.log(buttonRef.value && buttonRef.value.ref);
-});
-</script>
-
 <template>
   <header>
     <img
@@ -37,5 +27,32 @@ onMounted(() => {
     <Button type="danger" plain>Danger</Button><br /><br />
     <Button size="large">Large</Button>
     <Button size="small">Small</Button><br /><br />
+
+    <Collapse v-model="openedValue">
+      <CollapseItem name="hexian" title="hexian"> hexian</CollapseItem>
+      <CollapseItem name="hexian2">
+        <template #title>
+          <h2>template Title</h2>
+        </template>
+        default content default content default content default content default
+        content default content default content default content default content
+        default content default content
+      </CollapseItem>
+    </Collapse>
   </main>
 </template>
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
+import Button from "./components/Button/Button.vue";
+import Collapse from "./components/Collapse/Collapse.vue";
+import CollapseItem from "./components/Collapse/CollapseItem.vue";
+
+import type { ButtonInstance } from "./components/Button/types";
+import type { NameType } from "./components/Collapse/type";
+const buttonRef = ref<ButtonInstance | null>(null);
+onMounted(() => {
+  console.log(buttonRef.value && buttonRef.value.ref);
+});
+
+const openedValue = ref<NameType[]>(["hexian2"]);
+</script>

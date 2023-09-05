@@ -70,6 +70,6 @@
   --hx-disabled-border-color: var(--hx-border-color-light);
 
   /*animation*/
-  --hx-transition-duration: 0.3s;
+  --hx-transition-duration: 0.5s;
   --hx-transition-duration-fast: 0.2s;
 }
