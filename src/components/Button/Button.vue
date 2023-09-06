@@ -11,16 +11,19 @@
       'is-disabled': disabled,
       'is-loading': loading,
     }"
-    :disabled="disabled"
+    :disabled="disabled || loading"
     :autofocus="autofocus"
     :type="nativeType"
   >
+    <Icon icon="spinner" :spin="true" v-if="loading"></Icon>
+    <Icon :icon="icon" v-if="icon" />
     <span><slot></slot></span>
   </button>
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
-import type { ButtonProps } from "./types";
+import type { ButtonInstance, ButtonProps } from "./types";
+import Icon from "../Icon/Icon.vue";
 defineOptions({
   name: "hxButton",
   inheritAttrs: false,
@@ -30,11 +33,9 @@ withDefaults(defineProps<ButtonProps>(), {
   nativeType: "button",
 });
 
-const _ref = ref<HTMLButtonElement>();
+const _ref = ref<ButtonInstance>();
 
 defineExpose({
   ref: _ref,
 });
 </script>
-
-<style></style>

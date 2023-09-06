@@ -15,7 +15,9 @@
       @click="handleItemClick"
     >
       <slot name="title">
-        <h3>{{ title }}</h3>
+        <h3>
+          {{ title }}
+        </h3>
       </slot>
     </div>
     <Transition name="slide" v-on="transitionEvents">
